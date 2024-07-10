@@ -14,14 +14,21 @@ module skruehul(laengde, diameter)
 
 module fordybning()
 {
-    rotate(default_rotation) cylinder(forsaenkning, d=skruehoved, center=true);
+    rotate(default_rotation) cylinder(forsaenkning, d=skruehoved, center=true, $fn=16);
 }
 
 module skrue(skruelaengde, skruediameter, forsaenkning, forsaenkningdiameter)
 {
-    translate([0, skruelaengde/2,0]){
-        rotate(-default_rotation) {cylinder(skruelaengde, d=skruediameter, center=true);
-        translate([0,0,skruelaengde-forsaenkning]) cylinder(forsaenkning, d=forsaenkningdiameter, center=true);}
+    translate([0, 0,0])
+    {
+        rotate(-default_rotation){
+            union()
+            {
+                translate([0,0,skruelaengde/2])cylinder(skruelaengde, d=skruediameter, center=true, $fn=128);
+                translate([0,0,skruelaengde-(forsaenkning/2)])
+                cylinder(forsaenkning, d=forsaenkningdiameter, center=true,$fn=128);
+            }
+            }
     }
 }
 
