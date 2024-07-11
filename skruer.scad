@@ -24,9 +24,9 @@ module skrue(skruelaengde, skruediameter, forsaenkning, forsaenkningdiameter)
         rotate(-default_rotation){
             union()
             {
-                translate([0,0,skruelaengde/2])cylinder(skruelaengde, d=skruediameter, center=true, $fn=128);
+                translate([0,0,skruelaengde/2])cylinder(skruelaengde, d=skruediameter, center=true, $fn=32);
                 translate([0,0,skruelaengde-(forsaenkning/2)])
-                cylinder(forsaenkning, d=forsaenkningdiameter, center=true,$fn=128);
+                cylinder(forsaenkning, d=forsaenkningdiameter, center=true,$fn=32);
             }
             }
     }
